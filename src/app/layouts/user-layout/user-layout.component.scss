@@ -1,0 +1,14 @@
+mat-sidenav-container {
+  height: 100vh;
+}
+
+mat-sidenav {
+  width: 230px;
+  background-color: var(--primary-color);
+  text-align: center;
+  color: var(--text-color);
+}
+
+mat-sidenav-content {
+  background-color: var(--bg-color);
+}
