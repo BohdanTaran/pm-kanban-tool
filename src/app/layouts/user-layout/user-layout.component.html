@@ -1,5 +1,15 @@
 <mat-sidenav-container [autosize]="true" class="example-container">
-  <mat-sidenav mode="side" opened> Sidenav content </mat-sidenav>
+  <mat-sidenav mode="side" opened>
+    <img src="assets/logo.webp" alt="logo" />
+    <ul>
+      @for (item of sidebarContent; track $index) {
+        <li [routerLink]="item.routerLink" [routerLinkActive]="'is-active'">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.title }}</span>
+        </li>
+      }
+    </ul>
+  </mat-sidenav>
   <mat-sidenav-content>
     <app-header></app-header>
     <router-outlet></router-outlet>

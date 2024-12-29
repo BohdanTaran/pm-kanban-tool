@@ -1,14 +1,53 @@
+@import "../../scss/utils/";
+
 mat-sidenav-container {
-  height: 100vh;
+  height: 100%;
 }
 
 mat-sidenav {
-  width: 230px;
+  width: 60px;
   background-color: var(--primary-color);
-  text-align: center;
-  color: var(--text-color);
+  text-align: left;
+  color: var(--bg-color);
+
+  @include tablet() {
+    width: 230px;
+  }
 }
 
 mat-sidenav-content {
   background-color: var(--bg-color);
+}
+
+ul {
+  @include flex(column, center, center, nowrap, 0.5rem);
+  padding-top: 1rem;
+
+  li {
+    cursor: pointer;
+    @include flex(row, center, center, nowrap, 1rem);
+    width: 100%;
+    padding: 8px 0;
+
+    &:hover {
+      background-color: var(--accent-color);
+    }
+
+    &.is-active {
+      background-color: var(--accent-color);
+    }
+  }
+}
+
+mat-icon {
+  @include icon-size(1.8rem, 1.8rem, 1.8rem);
+}
+
+span {
+  display: none;
+
+  @include tablet() {
+    width: 80px;
+    display: block;
+  }
 }

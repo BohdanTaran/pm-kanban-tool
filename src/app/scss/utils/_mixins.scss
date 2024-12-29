@@ -1,0 +1,13 @@
+@mixin flex($fd: row, $ai: center, $jc: center, $fw: nowrap, $g: 0) {
+  display: flex;
+  flex-flow: $fd $fw;
+  align-items: $ai;
+  justify-content: $jc;
+  gap: $g;
+}
+
+@mixin icon-size($fs, $w, $h) {
+  font-size: $fs;
+  width: $w;
+  height: $h;
+}
