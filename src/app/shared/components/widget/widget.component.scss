@@ -1,0 +1,45 @@
+@import "../../../scss/utils/";
+
+.widget {
+  background-color: white;
+  box-shadow: var(--basic-shadow);
+  max-height: 170px;
+  min-width: 90px;
+  min-height: 120px;
+  width: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 5 / 4;
+
+  @include flex(row, center, center, nowrap, 1rem);
+
+  &:hover {
+    background-color: var(--primary-color);
+
+    mat-icon {
+      background-color: white;
+      color: var(--primary-color);
+    }
+
+    .count-title {
+      color: white;
+    }
+  }
+}
+
+mat-icon {
+  @include icon-size(1.5rem, 4rem, 4rem);
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  color: white;
+}
+
+.count-title {
+  @include flex(column, center, center, nowrap, 0);
+  text-align: center;
+
+  p {
+    padding: 0 6px;
+  }
+}

@@ -1,0 +1,19 @@
+<main class="container">
+  <div class="heading-title">
+    <h2>Kanban Tool</h2>
+    <p>Your Metrics at a Glance</p>
+    <mat-divider></mat-divider>
+    <div class="greet-container"><span>Hello, </span> <span class="username">Guest</span></div>
+  </div>
+  <div class="widget-container">
+    <div class="widget-container__check">
+      <app-widget [icon]="'edit'" [title]="'To-Do'"></app-widget>
+      <app-widget [icon]="'check'" [title]="'Done'"></app-widget>
+    </div>
+    <div class="widget-container__overview">
+      <app-widget [title]="'Task in Board'"></app-widget>
+      <app-widget [title]="'Task in Progress'"></app-widget>
+      <app-widget [title]="'Awaiting Feedback'"></app-widget>
+    </div>
+  </div>
+</main>

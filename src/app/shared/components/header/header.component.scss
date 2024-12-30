@@ -11,6 +11,14 @@ header {
     height: 95px;
   }
 
+  h3 {
+    visibility: hidden;
+
+    @include tablet() {
+      visibility: visible;
+    }
+  }
+
   .avatar {
     position: relative;
     @include flex(row, center, flex-end, nowrap, 0);

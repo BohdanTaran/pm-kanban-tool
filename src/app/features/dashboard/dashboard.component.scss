@@ -1,0 +1,60 @@
+@import "../../scss/utils/";
+
+.container {
+  height: 100%;
+  padding: 1rem;
+
+  @include tablet() {
+    padding: 3rem 0 0 3rem;
+  }
+
+  @include laptop() {
+    width: 80%;
+    padding: 5rem 0 0 8rem;
+  }
+
+  @include desktop() {
+    width: 50%;
+  }
+}
+
+.heading-title {
+  h2 {
+    font-size: 50px;
+  }
+
+  p {
+    font-size: 27px;
+  }
+}
+
+.greet-container {
+  padding: 1rem 0;
+
+  span {
+    font-size: 48px;
+  }
+
+  .username {
+    color: var(--text-color);
+    font-weight: 500;
+  }
+}
+
+.widget-container {
+  @include flex(column, flex-start, center, wrap, 2rem);
+
+  &__check {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 1rem;
+  }
+
+  &__overview {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="widget" [routerLink]="['/board']">
+  @if (icon) {
+    <mat-icon>{{ icon }}</mat-icon>
+  }
+  <div class="count-title">
+    <h1>{{ count }}</h1>
+    <p>{{ title }}</p>
+  </div>
+</div>

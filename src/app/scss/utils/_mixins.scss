@@ -10,4 +10,7 @@
   font-size: $fs;
   width: $w;
   height: $h;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
