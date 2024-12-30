@@ -1,4 +1,4 @@
-@import "../../../scss/utils/";
+@import "../../../scss/utils";
 
 header {
   @include flex(row, center, space-between, nowrap, 0.5rem);
