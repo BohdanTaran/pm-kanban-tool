@@ -1,1 +1,33 @@
-<p>board works!</p>
+<main class="container">
+  <h1>Board</h1>
+  <div class="board-columns">
+    @for (column of boards$ | async ; track column; let i = $index) {
+      <div class="column-container">
+        <h3>{{ column.title }}</h3>
+
+        <div
+          cdkDropList
+          [cdkDropListData]="column.tasks"
+          [cdkDropListConnectedTo]="(connectedLists$ | async) || []"
+          [id]="'list_' + column.title"
+          class="column"
+          (cdkDropListDropped)="drop($event)"
+        >
+          @for (task of column.tasks; track task) {
+            <div class="task"
+                 cdkDrag
+                 [cdkDragData]="task"
+            >
+              <h2>{{ task.title }}</h2>
+              <p>{{ task.description }}</p>
+              <strong>
+                <span [appTaskPriority]="task.priority"></span>
+                {{ task.priority }}
+              </strong>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</main>

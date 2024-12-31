@@ -7,13 +7,30 @@
   </div>
   <div class="widget-container">
     <div class="widget-container__check">
-      <app-widget [icon]="'edit'" [title]="'To-Do'"></app-widget>
-      <app-widget [icon]="'check'" [title]="'Done'"></app-widget>
+      <app-widget
+        [icon]="'edit'"
+        [title]="'To Do'"
+        [count]="(toDoCount$ | async) || 0"
+      ></app-widget>
+      <app-widget
+        [icon]="'check'"
+        [title]="'Done'"
+        [count]="(doneCount$ | async) || 0"
+      ></app-widget>
     </div>
     <div class="widget-container__overview">
-      <app-widget [title]="'Task in Board'"></app-widget>
-      <app-widget [title]="'Task in Progress'"></app-widget>
-      <app-widget [title]="'Awaiting Feedback'"></app-widget>
+      <app-widget
+        [title]="'Task in Board'"
+        [count]="(totalInBoard$ | async) || 0"
+      ></app-widget>
+      <app-widget
+        [title]="'Task in Progress'"
+        [count]="(inProgressCount$ | async) || 0"
+      ></app-widget>
+      <app-widget
+        [title]="'Awaiting Feedback'"
+        [count]="(awaitingFeedbackCount$ | async) || 0"
+      ></app-widget>
     </div>
   </div>
 </main>

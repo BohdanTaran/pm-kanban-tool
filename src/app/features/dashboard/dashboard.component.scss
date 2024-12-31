@@ -1,11 +1,11 @@
 @import "../../scss/utils";
 
 .container {
-  height: 100%;
+  height: calc(100vh - 75px);
   padding: 1rem;
 
   @include tablet() {
-    padding: 3rem 0 0 3rem;
+    padding: 3rem;
   }
 
   @include laptop() {

@@ -1,22 +1,39 @@
 {
-  "tasks": [
+  "boards": [
     {
-      "id": 1,
-      "title:": "Test1",
-      "description": "Test Description",
-      "assigned_to": "Bohdan Taran",
-      "deadline": "11/12/2004",
-      "priority": "High",
-      "subtask": [
+      "id": "1",
+      "title": "To-do",
+      "tasks": [
         {
           "id": 1,
-          "title": "Sub1"
-        },
-        {
-          "id": 2,
-          "title": "Sub2"
+          "title": "Test1",
+          "description": "Test Description",
+          "assigned_to": "Bohdan Taran",
+          "deadline": "12/11/2004",
+          "priority": "High",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Sub2"
+            }
+          ]
         }
       ]
+    },
+    {
+      "id": "2",
+      "title": "In Progress",
+      "tasks": []
+    },
+    {
+      "id": "3",
+      "title": "Awaiting Feedback",
+      "tasks": []
+    },
+    {
+      "id": "4",
+      "title": "Done",
+      "tasks": []
     }
   ]
 }
