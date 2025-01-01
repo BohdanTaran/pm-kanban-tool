@@ -5,18 +5,40 @@
       "title": "To-do",
       "tasks": [
         {
-          "id": 1,
-          "title": "Test1",
-          "description": "Test Description",
-          "assigned_to": "Bohdan Taran",
-          "deadline": "12/11/2004",
+          "title": "Second task",
+          "description": "sec",
+          "assigned_to": "Test",
+          "deadline": "2025-01-14T23:00:00.000Z",
+          "priority": "Low",
+          "subtasks": [
+            "",
+            "re"
+          ],
+          "id": 1735764222136
+        },
+        {
+          "title": "My first task",
+          "description": "Yeah!",
+          "assigned_to": "Test",
+          "deadline": "2025-01-22T23:00:00.000Z",
+          "priority": "Medium",
+          "subtasks": [
+            "",
+            "Show subtask"
+          ],
+          "id": 1735763200820
+        },
+        {
+          "title": "Next Task",
+          "description": "efwf",
+          "assigned_to": "Test",
+          "deadline": "2025-01-13T23:00:00.000Z",
           "priority": "High",
           "subtasks": [
-            {
-              "id": 1,
-              "title": "Sub2"
-            }
-          ]
+            "",
+            "ewfwe"
+          ],
+          "id": 1735764282508
         }
       ]
     },

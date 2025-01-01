@@ -31,7 +31,7 @@ export class BoardColumnService {
     )
   }
 
-  public updateTaskInColumns(fromColumnTitle: string, toColumnTitle: string, task: Task): Observable<void> {
+  public transferTask(fromColumnTitle: string, toColumnTitle: string, task: Task): Observable<void> {
     return this.getBoardColumns().pipe(
       map((boards) => {
         const fromColumn = boards.find((b) => b.title === fromColumnTitle);
@@ -59,4 +59,6 @@ export class BoardColumnService {
       })
     )
   }
+
+
 }

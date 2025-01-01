@@ -1,0 +1,59 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="fields">
+    <div class="left">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput required [formControlName]="'title'">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput [formControlName]="'description'"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Assigned to</mat-label>
+        <mat-select [formControlName]="'assigned_to'">
+          <mat-option [value]="'Test'">Test</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-divider vertical></mat-divider>
+    <div class="right">
+      <mat-form-field>
+        <mat-label>Choose a deadline</mat-label>
+        <input matInput [matDatepicker]="picker" required [formControlName]="'deadline'">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-toolbar color="primary">
+        <span>Priority</span>
+        <mat-button-toggle-group [formControlName]="'priority'" name="fontStyle" aria-label="Font Style">
+          @for (priority of priorityType; track priority) {
+            <mat-button-toggle [value]="priority">{{ priority }}</mat-button-toggle>
+          }
+        </mat-button-toggle-group>
+      </mat-toolbar>
+      <div class="subtasks">
+        <mat-form-field>
+          <mat-label>Subtasks</mat-label>
+          <input matInput [(ngModel)]="newSubtask" [ngModelOptions]="{standalone: true}"/>
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="addSubtask($event)"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-list>
+          @for (subtask of form.value.subtasks; track subtask) {
+            <mat-list-item role="listitem">{{ subtask }}</mat-list-item>
+          }
+        </mat-list>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button mat-flat-button color="primary">Create Task</button>
+  </div>
+</form>

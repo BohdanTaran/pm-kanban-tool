@@ -23,7 +23,7 @@ export class UserLayoutComponent {
     {
       icon: "add",
       title: "Add task",
-      routerLink: "/addTask",
+      routerLink: "/add-task",
     },
     {
       icon: "view_week",

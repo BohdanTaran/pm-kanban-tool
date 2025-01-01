@@ -19,6 +19,10 @@ export const routes: Routes = [
         path: "board",
         loadComponent: () => import("./features/board/board.component").then(c => c.BoardComponent),
       },
+      {
+        path: "add-task",
+        loadComponent: () => import("./features/add-task/add-task.component").then(c => c.AddTaskComponent),
+      },
     ],
   },
   {

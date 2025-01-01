@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
