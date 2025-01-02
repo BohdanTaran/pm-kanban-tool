@@ -6,12 +6,13 @@ import { map, Observable } from "rxjs";
 import { AsyncPipe } from "@angular/common";
 
 import { MatDialog } from "@angular/material/dialog";
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { TaskInfoModalComponent } from "../../shared/components/modals/task-info-modal/task-info-modal.component";
 @Component({
   selector: "app-board",
   standalone: true,
-  imports: [DragDropModule, TaskPriorityDirective, AsyncPipe],
+  imports: [DragDropModule, TaskPriorityDirective, MatProgressBarModule, AsyncPipe],
   templateUrl: "./board.component.html",
   styleUrl: "./board.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,7 +22,12 @@ export class BoardComponent {
   private readonly dialog = inject(MatDialog);
   private readonly cdr = inject(ChangeDetectorRef);
 
-  public boards$: Observable<ColumnBoard[]> = this.boardColumnService.getBoardColumns();
+  public columns$: Observable<ColumnBoard[]> = this.boardColumnService.getBoardColumns();
+
+  private updateBoardData(): void {
+    this.columns$ = this.boardColumnService.getBoardColumns();
+    this.cdr.markForCheck();
+  }
 
   public openTaskInfo(task: Task): void {
     const dialogRef = this.dialog.open(TaskInfoModalComponent, {
@@ -33,12 +39,11 @@ export class BoardComponent {
     })
   }
 
-  private updateBoardData(): void {
-    this.boards$ = this.boardColumnService.getBoardColumns();
-    this.cdr.markForCheck();
+  public getTotalSubtasks(task: Task): number {
+    return task.subtasks?.filter(st => st.isCompleted).length || 0;
   }
 
-  public connectedLists$: Observable<string[] | null> = this.boards$.pipe(
+  public connectedLists$: Observable<string[] | null> = this.columns$.pipe(
     map((boards) => boards.map((b) => `list_${b.title}`))
   );
 

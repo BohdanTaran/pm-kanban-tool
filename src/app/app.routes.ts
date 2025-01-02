@@ -21,7 +21,7 @@ export const routes: Routes = [
       },
       {
         path: "add-task",
-        loadComponent: () => import("./features/add-task/add-task.component").then(c => c.AddTaskComponent),
+        loadComponent: () => import("./features/task/add-task/add-task.component").then(c => c.AddTaskComponent),
       },
     ],
   },

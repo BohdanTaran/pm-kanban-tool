@@ -1,9 +1,20 @@
 .container {
   width: 100%;
-  min-width: 300px;
+  min-width: 320px;
 }
 
 mat-dialog-actions {
   display: flex;
   justify-content: flex-end;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem
+}
+
+.subtasks {
+  display: flex;
+  flex-direction: column;
 }

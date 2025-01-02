@@ -1,0 +1,49 @@
+@import "../../../../scss/utils";
+
+.container {
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-content {
+  overflow-y: scroll;
+}
+
+mat-toolbar {
+  @include flex(row, center, flex-start, nowrap, 1rem);
+  border-radius: 1rem;
+
+  mat-button-toggle-group {
+    width: 100%;
+    border-radius: 1rem;
+
+    > mat-button-toggle {
+      width: 100%;
+    }
+  }
+}
+
+.subtasks {
+  padding: 1.5rem 0 0 0;
+
+  mat-list {
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+}

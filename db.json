@@ -5,40 +5,29 @@
       "title": "To-do",
       "tasks": [
         {
-          "title": "Second task",
-          "description": "sec",
+          "title": "first task",
+          "description": "dfrb",
           "assigned_to": "Test",
-          "deadline": "2025-01-14T23:00:00.000Z",
+          "deadline": "2025-01-08T23:00:00.000Z",
           "priority": "Low",
           "subtasks": [
-            "",
-            "re"
+            {
+              "id": 1735841064814,
+              "title": "9",
+              "isCompleted": false
+            },
+            {
+              "id": 1735841065157,
+              "title": "0",
+              "isCompleted": true
+            },
+            {
+              "id": 1735841065493,
+              "title": "-",
+              "isCompleted": true
+            }
           ],
-          "id": 1735764222136
-        },
-        {
-          "title": "My first task",
-          "description": "Yeah!",
-          "assigned_to": "Test",
-          "deadline": "2025-01-22T23:00:00.000Z",
-          "priority": "Medium",
-          "subtasks": [
-            "",
-            "Show subtask"
-          ],
-          "id": 1735763200820
-        },
-        {
-          "title": "Next Task",
-          "description": "efwf",
-          "assigned_to": "Test",
-          "deadline": "2025-01-13T23:00:00.000Z",
-          "priority": "High",
-          "subtasks": [
-            "",
-            "ewfwe"
-          ],
-          "id": 1735764282508
+          "id": 1735841066825
         }
       ]
     },
@@ -55,7 +44,33 @@
     {
       "id": "4",
       "title": "Done",
-      "tasks": []
+      "tasks": [
+        {
+          "title": "Third task",
+          "description": "Third task",
+          "assigned_to": "Test",
+          "deadline": "2025-01-20T23:00:00.000Z",
+          "priority": "Medium",
+          "subtasks": [
+            {
+              "id": 1735845356239,
+              "title": "test1",
+              "isCompleted": false
+            },
+            {
+              "id": 1735845357968,
+              "title": "test2",
+              "isCompleted": false
+            },
+            {
+              "id": 1735845359724,
+              "title": "test3",
+              "isCompleted": true
+            }
+          ],
+          "id": 1735845360427
+        }
+      ]
     }
   ]
 }

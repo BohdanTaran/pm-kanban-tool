@@ -7,18 +7,31 @@
   <h2 mat-dialog-title>{{ data.title }}</h2>
   <mat-dialog-content>
     <p>{{ data.description }}</p>
-    <p>Deadline {{ data.deadline | date }}</p>
+    <p>Deadline: {{ data.deadline | date }}</p>
     <strong>
       <span [appTaskPriority]="data.priority"></span>
-      {{ data.priority }}
+      Priority: {{ data.priority }}
     </strong>
+    @if (data.subtasks) {
+      <h3>Subtasks:</h3>
+      <section class="subtasks">
+        @for (subtask of data.subtasks; track subtask) {
+          <mat-checkbox
+            [checked]="subtask.isCompleted"
+            (change)="onToggleSubtask(subtask)"
+          >
+            {{ subtask.title }}
+          </mat-checkbox>
+        }
+      </section>
+    }
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button mat-dialog-close (click)="onDeleteTask(data.id.toString())">
       <mat-icon>delete</mat-icon> Delete
     </button>
-    <button mat-button>
-      <mat-icon>edit</mat-icon> Edit
+    <button mat-button (click)="openTaskEdit(data)">
+      <mat-icon >edit</mat-icon> Edit
     </button>
   </mat-dialog-actions>
 </div>

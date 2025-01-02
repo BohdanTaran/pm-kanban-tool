@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { FormArray, FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 
-import { Task } from "../../../shared/models/columnBoard.model";
+import { Subtask, Task } from "../../../../shared/models/columnBoard.model";
 
 import { MatInputModule } from "@angular/material/input";
 import { MatDatepickerModule } from "@angular/material/datepicker";
@@ -14,7 +14,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
-import { TaskService } from "../../../core/services/task.service";
+import { TaskService } from "../../../../core/services/task.service";
 
 @Component({
   selector: "app-add-task-form",
@@ -53,7 +53,7 @@ export class AddTaskFormComponent {
     assigned_to: [""],
     deadline: ["", [Validators.required]],
     priority: [""],
-    subtasks: this.fb.array<string>([]),
+    subtasks: this.fb.array<Subtask[]>([]),
   });
 
   addSubtask(event: MouseEvent): void {
@@ -61,7 +61,11 @@ export class AddTaskFormComponent {
 
     if (this.newSubtask.trim()) {
       const subtasksArray = this.form.get("subtasks") as FormArray;
-      subtasksArray.push(this.fb.control(this.newSubtask.trim()));
+      subtasksArray.push(this.fb.group({
+        id: Date.now(),
+        title: this.newSubtask.trim(),
+        isCompleted: false
+      }));
       this.newSubtask = "";
     }
   }
@@ -75,6 +79,8 @@ export class AddTaskFormComponent {
             verticalPosition: "top",
             duration: 3000,
           });
+
+          this.form.reset();
         },
       });
     }

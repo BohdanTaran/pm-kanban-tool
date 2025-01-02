@@ -1,7 +1,7 @@
 <main class="container">
   <h1>Board</h1>
   <div class="board-columns">
-    @for (column of boards$ | async ; track column; let i = $index) {
+    @for (column of columns$ | async ; track column; let i = $index) {
       <div class="column-container">
         <h3>{{ column.title }}</h3>
 
@@ -21,6 +21,14 @@
             >
               <h2>{{ task.title }}</h2>
               <p>{{ task.description }}</p>
+              <div class="subtasks-progress">
+                <span>Subtasks {{ getTotalSubtasks(task) }}/{{ task.subtasks.length }}</span>
+                <mat-progress-bar
+                  mode="determinate"
+                  [value]="getTotalSubtasks(task) / (task.subtasks?.length || 1) * 100"
+                >
+                </mat-progress-bar>
+              </div>
               <strong>
                 <span [appTaskPriority]="task.priority"></span>
                 {{ task.priority }}

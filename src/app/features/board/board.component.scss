@@ -60,8 +60,18 @@
   }
 
   strong {
-    padding: 0 1rem;
+    padding-top: 0.5rem;
     @include flex(row, center, flex-end, nowrap, 0.5rem);
+  }
+
+  .subtasks-progress {
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+
+    span {
+      width: 45%;
+    }
   }
 }
 
