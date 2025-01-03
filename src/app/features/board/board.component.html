@@ -1,7 +1,7 @@
 <main class="container">
   <h1>Board</h1>
   <div class="board-columns">
-    @for (column of columns$ | async ; track column; let i = $index) {
+    @for (column of columns$ | async ; track column.id) {
       <div class="column-container">
         <h3>{{ column.title }}</h3>
 
@@ -13,7 +13,7 @@
           class="column"
           (cdkDropListDropped)="drop($event)"
         >
-          @for (task of column.tasks; track task) {
+          @for (task of column.tasks; track task.id) {
             <div class="task"
                  cdkDrag
                  [cdkDragData]="task"

@@ -5,29 +5,53 @@
       "title": "To-do",
       "tasks": [
         {
-          "title": "first task",
-          "description": "dfrb",
+          "title": "Test task",
+          "description": "Test taska",
           "assigned_to": "Test",
-          "deadline": "2025-01-08T23:00:00.000Z",
-          "priority": "Low",
+          "deadline": "2025-01-13T23:00:00.000Z",
+          "priority": "High",
           "subtasks": [
             {
-              "id": 1735841064814,
-              "title": "9",
+              "id": 1735899975310,
+              "title": "2",
+              "isCompleted": true
+            },
+            {
+              "id": 1735899975808,
+              "title": "3",
               "isCompleted": false
             },
             {
-              "id": 1735841065157,
-              "title": "0",
+              "id": 1735899977605,
+              "title": "5",
               "isCompleted": true
             },
             {
-              "id": 1735841065493,
-              "title": "-",
+              "id": 1735899978070,
+              "title": "7",
+              "isCompleted": false
+            },
+            {
+              "id": 1735899978505,
+              "title": "8",
+              "isCompleted": false
+            },
+            {
+              "id": 1735910679553,
+              "title": "test",
               "isCompleted": true
             }
           ],
-          "id": 1735841066825
+          "id": 1735899979434
+        },
+        {
+          "title": "create the final task",
+          "description": "",
+          "assigned_to": "Test",
+          "deadline": "2025-01-06T23:00:00.000Z",
+          "priority": "Medium",
+          "subtasks": [],
+          "id": 1735910790730
         }
       ]
     },
@@ -39,36 +63,67 @@
     {
       "id": "3",
       "title": "Awaiting Feedback",
-      "tasks": []
+      "tasks": [
+        {
+          "title": "Second Task",
+          "description": "Second Task",
+          "assigned_to": "Test",
+          "deadline": "2025-01-05T23:00:00.000Z",
+          "priority": "Medium",
+          "subtasks": [
+            {
+              "id": 1735910753028,
+              "title": "Second Task",
+              "isCompleted": false
+            },
+            {
+              "id": 1735910754673,
+              "title": "Second Task2",
+              "isCompleted": true
+            }
+          ],
+          "id": 1735910715761
+        }
+      ]
     },
     {
       "id": "4",
       "title": "Done",
       "tasks": [
         {
-          "title": "Third task",
-          "description": "Third task",
+          "title": "Third Task",
+          "description": "Third Task",
           "assigned_to": "Test",
-          "deadline": "2025-01-20T23:00:00.000Z",
-          "priority": "Medium",
+          "deadline": "2025-01-18T23:00:00.000Z",
+          "priority": "Low",
           "subtasks": [
             {
-              "id": 1735845356239,
-              "title": "test1",
-              "isCompleted": false
-            },
-            {
-              "id": 1735845357968,
-              "title": "test2",
-              "isCompleted": false
-            },
-            {
-              "id": 1735845359724,
-              "title": "test3",
+              "id": 1735910731178,
+              "title": "Third Task",
               "isCompleted": true
             }
           ],
-          "id": 1735845360427
+          "id": 1735910732545
+        },
+        {
+          "title": "Final task",
+          "description": "i created the final task",
+          "assigned_to": "Test",
+          "deadline": "2025-01-08T23:00:00.000Z",
+          "priority": "High",
+          "subtasks": [
+            {
+              "id": 1735911024721,
+              "title": "fix subtasks",
+              "isCompleted": true
+            },
+            {
+              "id": 1735911037781,
+              "title": "fix smth new",
+              "isCompleted": true
+            }
+          ],
+          "id": 1735911025478
         }
       ]
     }

@@ -38,10 +38,11 @@
       <div class="subtasks">
         <mat-form-field>
           <mat-label>Subtasks</mat-label>
-          <input matInput/>
+          <input matInput [(ngModel)]="newSubtask" [ngModelOptions]="{standalone: true}"/>
           <button
             mat-icon-button
             matSuffix
+            (click)="addSubtask($event)"
           >
             <mat-icon>add</mat-icon>
           </button>

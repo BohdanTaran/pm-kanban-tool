@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { ColumnBoard, Task } from "../../shared/models/columnBoard.model";
-import { forkJoin, map, Observable, of, switchMap } from "rxjs";
+import { BehaviorSubject, forkJoin, map, Observable, of, switchMap, tap } from "rxjs";
 import { environment } from "../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 
@@ -11,6 +11,26 @@ export class BoardColumnService {
   private readonly http = inject(HttpClient);
 
   private readonly baseApiUrl: string = environment.baseApiUrl;
+
+  private boardsSubject = new BehaviorSubject<ColumnBoard[]>([]);
+  public boards$ = this.boardsSubject.asObservable();
+
+  constructor() {
+    this.loadBoards();
+  }
+
+  private loadBoards(): void {
+    this.http.get<ColumnBoard[]>(`${this.baseApiUrl}/boards`).subscribe((boards) => {
+      this.boardsSubject.next(boards);
+    });
+  }
+
+  public refreshBoards(): Observable<void> {
+    return this.http.get<ColumnBoard[]>(`${this.baseApiUrl}/boards`).pipe(
+      tap((boards) => this.boardsSubject.next(boards)),
+      map(() => void 0)
+    );
+  }
 
   public getBoardColumns(): Observable<ColumnBoard[]> {
     return this.http.get<ColumnBoard[]>(`${this.baseApiUrl}/boards`);
@@ -59,6 +79,4 @@ export class BoardColumnService {
       })
     )
   }
-
-
 }

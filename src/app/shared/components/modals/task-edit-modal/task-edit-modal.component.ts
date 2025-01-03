@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, inject, ViewChild } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, ViewChild } from "@angular/core";
 import { Subtask, Task } from "../../../models/columnBoard.model";
-import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, FormsModule, NgForm, ReactiveFormsModule, Validators } from "@angular/forms";
 
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatSelectModule } from "@angular/material/select";
@@ -13,7 +13,6 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatList, MatListItem } from "@angular/material/list";
 import { TaskService } from "../../../../core/services/task.service";
-import { TaskInfoModalComponent } from "../task-info-modal/task-info-modal.component";
 
 @Component({
   selector: "app-task-edit-modal",
@@ -31,6 +30,7 @@ import { TaskInfoModalComponent } from "../task-info-modal/task-info-modal.compo
     ReactiveFormsModule,
     MatList,
     MatListItem,
+    FormsModule,
   ],
   templateUrl: "./task-edit-modal.component.html",
   styleUrl: "./task-edit-modal.component.scss",
@@ -45,7 +45,9 @@ export class TaskEditModalComponent {
   public readonly data: Task = inject(MAT_DIALOG_DATA);
   public priorityType: string[] = ["High", "Medium", "Low"];
 
-  @ViewChild('taskForm') taskForm: any;
+  public newSubtask: string | "" = "";
+
+  @ViewChild("taskForm") taskForm!: NgForm;
 
   public readonly form = this.fb.group({
     title: [this.data.title, [Validators.required]],
@@ -62,11 +64,27 @@ export class TaskEditModalComponent {
         next: () => {
           const subtasksArray = this.form.get("subtasks") as FormArray;
           const updatedSubtasks = subtasksArray.value.filter((st: Subtask) => st.id !== subtask.id);
-          this.form.setControl('subtasks', this.fb.array(updatedSubtasks));
+          this.form.setControl("subtasks", this.fb.array(updatedSubtasks));
 
           this.cdr.markForCheck();
-        }
+        },
       });
+    }
+  }
+
+  addSubtask(event: MouseEvent): void {
+    event.preventDefault();
+
+    if (this.newSubtask.trim()) {
+      const subtasksArray = this.form.get("subtasks") as FormArray;
+      subtasksArray.push(
+        this.fb.group({
+          id: Date.now(),
+          title: this.newSubtask.trim(),
+          isCompleted: false,
+        })
+      );
+      this.newSubtask = "";
     }
   }
 
@@ -74,8 +92,8 @@ export class TaskEditModalComponent {
     if (this.form.valid) {
       this.taskService.updateTask({ ...this.data, ...this.form.value } as Task).subscribe({
         next: () => {
-          this.dialog.close();
-        }
+          this.dialog.close({ ...this.form.value });
+        },
       });
     }
   }
